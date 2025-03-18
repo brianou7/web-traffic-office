@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Infracciones{% endblock %}
+{% block content %}
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'violations:index' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'violations:index' %}">Comparendos</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Infracciones</li>
+        </ol>
+    </nav>
+    <br>
+    <h3 class="text-center">Lista de infracciones</h1>
+    <br>
+    <div class="container">
+        <div class="row">
+            <table class="table table-hover table-fixed w-auto">
+                <thead>
+                    <tr>
+                    <th class="th-sm" scope="col">Código</th>
+                    <th class="th-sm" scope="col">Descripción</th>
+                    <th class="th-lg" scope="col">Multa</th>
+                    <th class="th-lg" scope="col">Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    {% if object_list%}
+                        {% for infraction in object_list %}
+
+                            <tr {% if infraction.impound %} class="table-danger" {% endif %}>
+                                <th scope="row">{{ infraction.code }}</th>
+                                <td>{{ infraction.description }}</td>
+                                <td>{{ infraction.fine }} SMDLV</td>
+                                <td>$ {{ infraction.get_value }}</td>
+                            </tr>
+
+                        {% endfor %}
+                    {% else %}
+
+                        <tr>
+                            <th scope="row" colspan="4">No tiene vehículos registrados</th>
+                        </tr>
+
+                    {% endif %}
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+{% endblock %}

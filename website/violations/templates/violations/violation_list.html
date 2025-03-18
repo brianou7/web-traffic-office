@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Mis comparendos{% endblock %}
+{% block content %}
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'violations:index' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'violations:index' %}">Comparendos</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Mis comparendos</li>
+        </ol>
+    </nav>
+    <br>
+    <h3 class="text-center">Mis comparendos</h1>
+    <br>
+    <div class="container text-center">
+        <div class="row">
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">Infracción</th>
+                    <th scope="col">Vehículo</th>
+                    <th scope="col">Creado por</th>
+                    <th scope="col">Agente</th>
+                    <th scope="col">Creado el</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    {% if object_list%}
+                        {% for violation in object_list %}
+
+                            <tr>
+                                <th scope="row">{{ violation.infraction.code }}</th>
+                                <td>{{ violation.vehicle }}</td>
+                                <td>{{ violation.get_created_by_display }}</td>
+                                <td>{{ violation.officer }}</td>
+                                <td>{{ violation.created_at }}</td>
+                            </tr>
+
+                        {% endfor %}
+                    {% else %}
+
+                        <tr>
+                            <th scope="row" colspan="4">No tiene comparenods</th>
+                        </tr>
+
+                    {% endif %}
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+{% endblock %}
