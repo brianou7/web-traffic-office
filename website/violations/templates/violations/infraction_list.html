@@ -3,25 +3,16 @@
 {% block title %}Infracciones{% endblock %}
 {% block content %}
 
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'violations:index' %}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{% url 'violations:index' %}">Comparendos</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Infracciones</li>
-        </ol>
-    </nav>
-    <br>
-    <h3 class="text-center">Lista de infracciones</h1>
-    <br>
+    <h3 class="text-center">Lista de infracciones</h3>
     <div class="container">
         <div class="row">
             <table class="table table-hover table-fixed w-auto">
                 <thead>
                     <tr>
-                    <th class="th-sm" scope="col">Código</th>
+                    <th class="th-sm col-1" scope="col">Código</th>
                     <th class="th-sm" scope="col">Descripción</th>
-                    <th class="th-lg" scope="col">Multa</th>
-                    <th class="th-lg" scope="col">Valor</th>
+                    <th class="th-sm col-1" scope="col">Multa</th>
+                    <th class="th-sm col-1" scope="col">Valor</th>
                     </tr>
                 </thead>
                 <tbody>

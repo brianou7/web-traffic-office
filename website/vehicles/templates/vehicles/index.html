@@ -2,27 +2,18 @@
 
 {% block title %}Mis vehículos{% endblock %}
 {% block content %}
-   
 
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'violations:index' %}">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Vehículos</li>
-        </ol>
-    </nav>
-    <br>
-    <h3 class="text-center">Mis vehículos</h1>
-    <br>
+    <h3 class="text-center">Mis vehículos</h3>
     <div class="container text-center">
         <div class="row">
             <table class="table">
                 <thead>
                     <tr>
-                    <th scope="col">Placa</th>
-                    <th scope="col">Tipo</th>
-                    <th scope="col">Marca</th>
-                    <th scope="col">Modelo</th>
-                    <th scope="col">Año</th>
+                    <th class="th-sm col-2"  scope="col">Placa</th>
+                    <th class="th-sm col-2"  scope="col">Tipo</th>
+                    <th class="th-sm col-1"  scope="col">Marca</th>
+                    <th class="th-sm col-2"  scope="col">Modelo</th>
+                    <th class="th-sm col-1"  scope="col">Año</th>
                     </tr>
                 </thead>
                 <tbody>
