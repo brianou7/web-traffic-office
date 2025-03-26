@@ -7,14 +7,14 @@
     <br>
     <div class="container text-center">
         <div class="row">
-            <table class="table">
+            <table class="table table-fixed">
                 <thead>
                     <tr>
-                    <th scope="col">Infracción</th>
-                    <th scope="col">Vehículo</th>
-                    <th scope="col">Creado por</th>
-                    <th scope="col">Agente</th>
-                    <th scope="col">Creado el</th>
+                    <th class="th-sm col-1" scope="col">Infracción</th>
+                    <th class="th-sm col-2" scope="col">Vehículo</th>
+                    <th class="th-sm col-2" scope="col">Creado por</th>
+                    <th class="th-sm " scope="col">Agente</th>
+                    <th class="th-sm col-3" scope="col">Creado el</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,7 +34,7 @@
                     {% else %}
 
                         <tr>
-                            <th scope="row" colspan="4">No tiene comparenods</th>
+                            <td scope="row" colspan="5">No tiene comparenods</td>
                         </tr>
 
                     {% endif %}

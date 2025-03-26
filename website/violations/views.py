@@ -12,6 +12,9 @@ class ViolationListView(ListView):
 
     model = Violation
 
+    def get_queryset(self):
+        return super().get_queryset().filter(vehicle__owner=self.request.user)
+
 
 class InfractionListView(ListView):
 

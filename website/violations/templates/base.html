@@ -28,11 +28,18 @@
         <li class="nav-item"><a href="{% url 'violations:infractions' %}" class="nav-link link-body-emphasis px-2">Infracciones</a></li>
         <li class="nav-item"><a href="{% url 'vehicles:index' %}" class="nav-link link-body-emphasis px-2">Vehículos</a></li>
         <li class="nav-item"><a href="{% url 'violations:violations' %}" class="nav-link link-body-emphasis px-2">Comparendos</a></li>
-        <li class="nav-item"><a href="{% url 'admin:index' %}" class="nav-link link-body-emphasis px-2">Admin</a></li>
+        {% if request.user.is_staff %}
+          <li class="nav-item"><a href="{% url 'admin:index' %}" class="nav-link link-body-emphasis px-2">Admin</a></li>
+        {% endif %}
       </ul>
       <ul class="nav">
-        <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">Login</a></li>
-        <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">Sign up</a></li>
+        {% if request.user.is_authenticated %}
+          <li class="nav-item"><p class="p-2">Hola <b>{{ request.user.first_name }}</b></p></li>
+          <li class="nav-item"><a href="{% url 'auth:index' %}" class="nav-link link-body-emphasis px-2">Cerrar sesión</a></li>
+        {% else %}
+          <li class="nav-item"><a href="{% url 'auth:index' %}" class="nav-link link-body-emphasis px-2">Ingresar</a></li>
+          <li class="nav-item"><a class="btn btn-light px-2" href="#" role="button">Crear cuenta</a></li>
+        {% endif %}
       </ul>
     </div>
   </nav>
