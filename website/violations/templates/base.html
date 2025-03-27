@@ -35,7 +35,7 @@
       <ul class="nav">
         {% if request.user.is_authenticated %}
           <li class="nav-item"><p class="p-2">Hola <b>{{ request.user.first_name }}</b></p></li>
-          <li class="nav-item"><a href="{% url 'auth:index' %}" class="nav-link link-body-emphasis px-2">Cerrar sesión</a></li>
+          <li class="nav-item"><a href="{% url 'auth:logout' %}" class="nav-link link-body-emphasis px-2">Cerrar sesión</a></li>
         {% else %}
           <li class="nav-item"><a href="{% url 'auth:index' %}" class="nav-link link-body-emphasis px-2">Ingresar</a></li>
           <li class="nav-item"><a class="btn btn-light px-2" href="#" role="button">Crear cuenta</a></li>
