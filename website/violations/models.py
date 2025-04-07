@@ -42,7 +42,7 @@ class Violation(models.Model):
         (2, 'Cámara de seguridad'),
     )
 
-    infraction = models.ForeignKey('violations.Infraction', on_delete=models.CASCADE)
+    infraction = models.ForeignKey('violations.Infraction', related_name='violations', on_delete=models.CASCADE)
     created_by = models.IntegerField(verbose_name='Creado por', choices=CREATORS)
     created_at = models.DateTimeField(verbose_name='Fecha y hora de creación', auto_now_add=True)
     officer = models.ForeignKey('officers.Officer', on_delete=models.CASCADE)

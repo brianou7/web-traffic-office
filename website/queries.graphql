@@ -1,0 +1,44 @@
+query {
+  allInfractions(first: 10, code: "A1") {
+    edges {
+      node {
+        id
+        code
+        __typename
+        category
+        description
+        violations {
+          edges {
+            node {
+              id
+              vehicle {
+                licensePlate
+                brand
+                model
+                # extraField
+              }
+            }
+          }
+        }
+      }
+    }
+    pageInfo {
+      startCursor
+      endCursor
+      hasNextPage
+      hasPreviousPage
+    }
+  }
+}
+
+// --------------------------------------------------------------------------------
+
+query {
+  __type(name: "ViolationsInfractionCategoryChoices") {
+    name
+    enumValues {
+      name
+      description
+    }
+  }
+}

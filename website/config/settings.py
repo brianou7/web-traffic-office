@@ -41,9 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles', # Required for GraphiQL
     'bootstrap5',
-    'django_extensions'
+    'django_extensions',
+    'graphene_django'
 ]
 
 MIDDLEWARE = [
@@ -132,3 +133,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Custom settings
 
 SMDLV = 26041
+
+# Graphene settings
+
+GRAPHENE = {
+    'SCHEMA': 'config.schema.schema',
+}
