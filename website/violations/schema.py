@@ -1,5 +1,7 @@
 import graphene
 
+from django.db.models import Q
+
 from graphene import relay
 from graphene_django import DjangoObjectType
 from graphene_django.converter import convert_choices_to_named_enum_with_descriptions
@@ -110,8 +112,42 @@ class CreateInfraction(graphene.Mutation):
         return CreateInfraction(infraction=infraction)
 
 
+class UpdateInfraction(graphene.Mutation):
+
+    class Arguments:
+        code = graphene.String(required=True)
+        fine = graphene.Int(required=True)
+        impound = graphene.Boolean(required=True)
+
+    infraction = graphene.Field(InfractionNode)
+
+    @classmethod
+    def mutate(cls, root, info, code, fine, impound):
+        infraction = Infraction.objects.get(code=code)
+        infraction.fine = fine
+        infraction.impound = impound
+        infraction.save(force_update=True)
+
+        return UpdateInfraction(infraction=infraction)
+
+
+class DeleteInfraction(graphene.Mutation):
+
+    class Arguments:
+        code = graphene.String(required=True)
+
+    infraction = graphene.Field(InfractionNode)
+
+    @classmethod
+    def mutate(cls, root, info, code):
+        infraction = Infraction.objects.get(code=code)
+        infraction.delete()
+
+        return DeleteInfraction(infraction=infraction)
+
+
 class Mutation(graphene.ObjectType):
 
     create_infraction = CreateInfraction.Field()
-    # update_infraction = UpdateInfraction.Field()
-    # delete_infraction = DeleteInfraction.Field()
+    update_infraction = UpdateInfraction.Field()
+    delete_infraction = DeleteInfraction.Field()

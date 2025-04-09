@@ -1,0 +1,31 @@
+mutation InfractionMutation {
+  createInfraction(
+    category: "B"
+    code: "B4"
+    description: "Conducir un vehículo sin placas, no portarlas en el extremo delantero o trasero, portarlas con obstáculos o en condiciones que dificulten su plena  identificación,  portar  en  el  lugar  destinado  a  las  placas, distintivos similares a estas o que la imiten, o que correspondan a placas  de  otros  países  o,  sin  el  permiso  vigente  expedido  por autoridad  de  tránsito.  Realizar  cambio  en  las  características  que identifican un vehículo automotor. Cambiar, modificar o adulterar los números de identificación del motor, chasis o serie de un vehículo."
+    fine: 10
+    impound: true
+  ) {
+    infraction {
+      id
+      code
+      description
+    }
+  }
+
+  updateInfraction(code: "B2", fine: 8, impound: true) {
+    infraction {
+      id
+      code
+      fine
+      impound
+    }
+  }
+
+  deleteInfraction(code: "B4") {
+    infraction {
+      code
+      description
+    }
+  }
+}
